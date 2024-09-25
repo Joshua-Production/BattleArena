@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using static System.Net.Mime.MediaTypeNames;
 
@@ -20,12 +21,40 @@ namespace BattleArena
         public float Health
         {
             get { return _health; }
-            private set { _health = Math.Clamp(value, 0, _maxHealth); }      
-           
+            private set { _health = Math.Clamp(value, 0, _maxHealth); }
         }
 
+        public float Fight(Character attacker, Enemy defender)
+        {
+            float damageTaken = CalculateDamage(attacker.AttackPower, defender.DefensePower);
+            defender._health -= damageTaken;
+            return damageTaken;
+        }
+
+        public float Fight(Enemy attacker, Character defender)
+        {
+            float damageTaken = CalculateDamage(attacker.AttackPower, defender.DefensePower);
+            defender._health -= damageTaken;
+            return damageTaken;
+        }
+
+
+        float CalculateDamage(float attack, float defence)
+        {
+            float damage = attack - defence;
+            // damage clamp method 1
+            if (damage <= 0)
+            {
+                damage = 0;
+            }
+
+            return damage;
+
+        }
         public float AttackPower { get { return _attackPower; } }
         public float DefensePower { get { return _defensePower; } }
+
+        
 
         public Character(string name, float maxHealth, float attackPower, float defensePower)
         {
@@ -52,7 +81,7 @@ namespace BattleArena
             Health -= damage;
             if (Health == 0) 
             {
-                Die();
+               Die();
             }
         }
 
@@ -61,10 +90,10 @@ namespace BattleArena
         {
             Health += health;
         }
-        private void Die()
-        {
+         public void Die()
+         {
             Console.WriteLine(Name + " has died!");
-        }
+         }
 
         public void PrintStats()
         {
@@ -74,5 +103,8 @@ namespace BattleArena
             Console.WriteLine("Defense Power: " + DefensePower);
         }
 
+
+
+       
     }
 }

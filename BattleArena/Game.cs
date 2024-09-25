@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,6 +10,10 @@ namespace BattleArena
     internal class Game
     {
         private bool _gameOver = false;
+
+        Character player = new Character(name: " Player ", maxHealth: 50, attackPower: 10, defensePower: 5);
+        //Character enemy = new Character(name: "Enemy", maxHealth: 100, attackPower: 9, defensePower: 5);
+        Enemy enemy = new Enemy(name: " Rick the unkillable ", maxHealth: 25, attackPower: 5, defensePower: 5);
 
         private int GetInput(string description, string option1, string option2)
         {
@@ -53,31 +58,49 @@ namespace BattleArena
         }
         private void Start()
         {
-            Character player = new Character(name: "Player", maxHealth: 100, attackPower: 10, defensePower: 5);
-            Character enemy = new Character(name: "Enemy", maxHealth: 100, attackPower: 9, defensePower: 5);
-            player.PrintStats();
-            Console.WriteLine();
-            enemy.PrintStats();
-            
-            Console.WriteLine("Press (Enter Key) to attack");
-            Console.ReadKey();
-      
-            float damage = player.Attack(enemy);
-            float playerdamage = enemy.Attack(player);
-            Console.WriteLine(player.Name + " did " + damage + " to " + enemy.Name + "!");
-            Console.WriteLine(enemy.Name + " did " + damage + " to " + player.Name + "!");
-
-            Console.WriteLine();
 
             player.PrintStats();
             Console.WriteLine();
             enemy.PrintStats();
-            
+
+
         }
 
         private void Update()
         {
+            
 
+            while (player.Health > 0 && enemy.Health > 0)
+            {
+                Console.WriteLine("Press (Enter Key) to attack");
+
+                Console.ReadKey();
+
+                Console.Clear();
+                Console.WriteLine(player.Name + " took " + enemy.Fight(enemy, player) + " damage! ");
+                Console.WriteLine(enemy.Name + " took " + player.Fight(player, enemy) + " damage! ");
+                
+
+                player.PrintStats();
+                Console.WriteLine();
+                enemy.PrintStats();
+
+
+                if (player.Health <= 0)
+                {
+                    player.Die();
+                    _gameOver = true;
+
+                }
+
+                else if (enemy.Health <= 0)
+                {
+                    enemy.Die();
+
+                }
+
+
+            }
         }
 
         private void End()
