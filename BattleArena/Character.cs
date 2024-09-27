@@ -8,7 +8,7 @@ using static System.Net.Mime.MediaTypeNames;
 
 namespace BattleArena
 {
-    internal class Character
+     internal abstract class Character
     {
         private string _name = "Character";
         private float _maxHealth = 10;
@@ -31,6 +31,8 @@ namespace BattleArena
             return damageTaken;
         }
 
+        public abstract void Speak();
+       
         public float Fight(Enemy attacker, Character defender)
         {
             float damageTaken = CalculateDamage(attacker.AttackPower, defender.DefensePower);
@@ -97,14 +99,14 @@ namespace BattleArena
 
         public void PrintStats()
         {
-            Console.WriteLine("Name:          " + Name);
-            Console.WriteLine("Health:        " + Health + "/" + MaxHealth);
-            Console.WriteLine("Attack Power:  " + AttackPower);
-            Console.WriteLine("Defense Power: " + DefensePower);
+            Console.WriteLine("Name: " + Name);
+            Console.WriteLine("Health: " + Health + "/" + MaxHealth);
+            Console.WriteLine("Attack Power: " + AttackPower);
+            Console.WriteLine("Defense Power:" + DefensePower);
         }
+        
 
 
 
-       
     }
 }

@@ -6,21 +6,16 @@ using System.Threading.Tasks;
 
 namespace BattleArena
 {
-    
-
-
-    
-
-    internal class Enemy : Character
+    internal class Player : Character
     {
-        public Enemy(string name, float maxHealth, float attackPower, float defensePower):base(name, maxHealth, attackPower, defensePower)
+        public Player(string name, float maxHealth, float attackPower, float defensePower) : base(name, maxHealth, attackPower, defensePower)
         {
-            
+
         }
         public override void Speak()
         {
             throw new NotImplementedException();
         }
-
     }
 }
+
