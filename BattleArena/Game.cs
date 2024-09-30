@@ -93,7 +93,7 @@ namespace BattleArena
                     Console.WriteLine("-------------------------------");
                     Console.WriteLine(" Oh ok i get it now the Dev hates me let me call him really quick " +
                         "\n ... mhm ... ok... can you spawn a elden ring type boss...please..." + "\n" +
-                        " bro like this player is annoying me ... ill give you $5 (Call Ended)");
+                        " bro please this player is annoying me ... ill give you $5 (Call Ended)");
                     Console.WriteLine("Press (Enter Key) to continue");
                     Console.ReadKey();
                     Console.Clear();
@@ -101,7 +101,7 @@ namespace BattleArena
                     //spawning the OP boss
                     Console.WriteLine(" HaHaHa I just made the game impossible feast your eyes on these stats ");
                     enemy3.PrintStats();
-                    Console.WriteLine(" Now you done RICK KILL HIM");
+                    Console.WriteLine(" Now you are done kid RICK KILL HIM");
                     Console.WriteLine("Press (Enter Key) to attack");
                     Console.ReadKey();
 
@@ -116,7 +116,9 @@ namespace BattleArena
 
                     }
                 }
-                
+                Console.WriteLine("");
+
+                Console.WriteLine("HAHAHAHHAH skill issue");
                
             }
         }
