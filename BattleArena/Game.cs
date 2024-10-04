@@ -119,7 +119,7 @@ namespace BattleArena
                 Console.WriteLine("");
 
                 Console.WriteLine("HAHAHAHHAH skill issue");
-               
+                player.Speak();
             }
         }
 

@@ -14,7 +14,7 @@ namespace BattleArena
         }
         public override void Speak()
         {
-            throw new NotImplementedException();
+            Console.WriteLine(" Player: Bruh ");
         }
     }
 }
